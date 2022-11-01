@@ -30,6 +30,7 @@ bot_synapse_adm=$YNH_APP_ARG_BOT_SYNAPSE_ADM
 encryption=$YNH_APP_ARG_ENCRYPTION
 botadmin=$YNH_APP_ARG_BOTADMIN
 botusers=$YNH_APP_ARG_BOTUSERS
+use_dendrite=$YNH_APP_ARG_SWITCHTODENDRITE
 
 app=$YNH_APP_INSTANCE_NAME
 
@@ -38,12 +39,19 @@ then
 	botusers=$botadmin
 fi
 
+if [ "$use_dendrite" = true ]
+then
+    instance_str="dendrite"
+else
+    instance_str="synapse"
+fi
+
 # ToDo check (in manifest?) if the selected synapse instance is not already connected to a mautrix_whatsapp bridge
 if [ $synapsenumber -eq "1" ]
 then
-	synapse_instance="synapse"
+	synapse_instance=$instance_str
 else
-	synapse_instance="synapse__$synapsenumber"
+	synapse_instance="$instance_str __$synapsenumber"
 fi
 server_name=$(ynh_app_setting_get --app $synapse_instance --key server_name)
 domain=$(ynh_app_setting_get --app $synapse_instance --key domain)

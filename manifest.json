@@ -30,6 +30,18 @@
     "arguments": {
         "install": [
             {
+                "name": "switchToDendrite",
+                "type": "boolean",
+                "ask": {
+                    "en": "Do you use Dendrite for your Matrix Server?",
+                    "fr": "Do you use Dendrite for your Matrix Server?"
+                },
+                "help": {
+                    "en": "Activate to use Dendrite in the installation process",
+                    "fr": "Activate to use Dendrite in the installation process"
+                },
+                "default": false
+            },{
                 "name": "synapsenumber",
                 "type": "string",
                 "ask": {
