@@ -39,7 +39,7 @@ then
 	botusers=$botadmin
 fi
 
-if [ "$use_dendrite" = true ]
+if [ $use_dendrite ]
 then
     instance_str="dendrite"
 else
